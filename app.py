@@ -89,7 +89,7 @@ def index():
 	else:
 		result = "We couldn't find a medicine by that name."
 
-	return render_template("based.html", result=result, textweb_key = TXTWEB_APP_KEY)
+	return render_template("base.html", result=result, textweb_key = TXTWEB_APP_KEY)
 
 @app.route('/app/med_alt/<med_name>')
 def med_alt(med_name):
@@ -102,8 +102,8 @@ def med_alt(med_name):
 			result = result + "%s [Unit price: Rs. %s]<br>" % (alternative['brand'], alternative['unit_price'])
 	else:
 		result = "We couldn't find a generic alternative for that medicine"
-		
-	return render_template("based.html", result=result, textweb_key = TXTWEB_APP_KEY)
+
+	return render_template("base.html", result=result, textweb_key = TXTWEB_APP_KEY)
 
 if __name__ == '__main__':
 	app.run(debug=True)
