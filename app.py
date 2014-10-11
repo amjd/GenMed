@@ -1,4 +1,5 @@
 import requests
+import urllib
 import json
 import os
 from flask import Flask, request, render_template
@@ -57,7 +58,7 @@ class TrueMD(object):
 		except:
 			return medicine_details
 
-	def med_alternatives(self search_term, limit = 5):
+	def med_alternatives(self, search_term, limit = 5):
 		"""
 		GET /medicine_alternatives
 		Parameters:
@@ -93,6 +94,7 @@ def index():
 
 @app.route('/app/med_alt/<med_name>')
 def med_alt(med_name):
+	med_name = med_name.replace('%20',' ')
 	tmd = TrueMD()
 	alternatives = tmd.med_alternatives(med_name)
 	result = ""
@@ -101,7 +103,7 @@ def med_alt(med_name):
 		for alternative in alternatives:
 			result = result + "%s [Unit price: Rs. %s]<br>" % (alternative['brand'], alternative['unit_price'])
 	else:
-		result = "We couldn't find a generic alternative for that medicine"
+		result = "We couldn't find a generic alternative for that medicine."
 
 	return render_template("base.html", result=result, textweb_key = TXTWEB_APP_KEY)
 
