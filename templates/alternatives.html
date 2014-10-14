@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if error_code %}
+	{{ error_msg }}
+{% else %}
+	{% for alternative in alternatives %}
+		{{ alternative['brand'] }} [Unit price: Rs. {{ alternative['unit_price'] }}]<br>
+	{% endfor %}
+{% endif %}
+
+{% endblock %}

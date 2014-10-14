@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if error_code %}
+	{{ error_msg }}
+{% else %}
+	{% for suggestion in suggestions %}
+		<a href="/app/med_alt/{{ suggestion }}">{{ suggestion }}</a><br>
+	{% endfor %}
+{% endif %}
+
+{% endblock %}
