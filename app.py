@@ -89,6 +89,8 @@ class TrueMD(object):
 @app.route('/app/med_sugg')
 def med_sugg():
 	message = request.args['txtweb_message'].strip()
+	if not message:
+		return render_template("base.html", error_code=error_code, error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 	tmd = TrueMD()
 	suggestions, error_code, error_msg = tmd.med_suggestions(message)
 	if suggestions:
