@@ -6,7 +6,8 @@ A [Textweb](http://www.txtweb.com) app to get information about generic medicine
 Note: At the moment, this works only in India.
 
 ###Usage
-Send `@genmed.alt <medicine-name>` to 51115 to get a list generic alternatives and their prices for any medicine.
+- Send `@genmed.alt <medicine-name>` to 51115 to get a list generic alternatives and their prices for a medicine.
+- Send `@genmed.detl <medicine-name>` to 51115 to get details about a medicine (composition and price). [Unfinished]
 
 ###Todo
 - Add an extension 'info' (@genmed.info) to get the composition of a medicine.
