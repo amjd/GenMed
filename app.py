@@ -86,41 +86,67 @@ class TrueMD(object):
 
 		return alternatives_list, error_code, error_msg
 
-@app.route('/app/med_sugg')
-def med_sugg():
+
+#Returns a list of suggestions matching the medicine name.
+#Each medicine suggestion links to a page showing its generic alternatives.
+@app.route('/app/med_alt_sugg')
+def med_alt_sugg():
 	if not request.args.get('txtweb_message', None):
 		return render_template("base.html", txtweb_key=TXTWEB_APP_KEY)
 	message = request.args['txtweb_message'].strip()
 	tmd = TrueMD()
 	suggestions, error_code, error_msg = tmd.med_suggestions(message)
 	if suggestions:
-		return render_template("suggestions.html", suggestions=suggestions, error_code=error_code, \
+		return render_template("alt_suggestions.html", suggestions=suggestions, error_code=error_code, \
 			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 	else:
 		error_code = 2
 		error_msg = "We couldn't find a medicine by that name."
-		return render_template("suggestions.html", suggestions=suggestions, error_code=error_code, \
+		return render_template("alt_suggestions.html", suggestions=suggestions, error_code=error_code, \
 			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 
-#UNFINISHED
-@app.route('/app/med_detl')
-def med_detl():
+
+#Returns a list of suggestions matching the medicine name.
+#Each medicine suggestion links to a page showing its composition and price.
+@app.route('/app/med_detl_sugg')
+def med_detl_sugg():
+	if not request.args.get('txtweb_message', None):
+		return render_template("base.html", txtweb_key=TXTWEB_APP_KEY)
 	message = request.args['txtweb_message'].strip()
 	tmd = TrueMD()
-	details = tmd.med_details(message)
-	result = ""
-	if details:
-		for suggestion in suggestions:
-			result = result + '<a href="/app/med_alt/%s">%s</a>\n' % (suggestion, suggestion)
+	suggestions, error_code, error_msg = tmd.med_suggestions(message)
+	if suggestions:
+		return render_template("detl_suggestions.html", suggestions=suggestions, error_code=error_code, \
+			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 	else:
-		result = "We couldn't find a medicine by that name."
+		error_code = 2
+		error_msg = "We couldn't find a medicine by that name."
+		return render_template("detl_suggestions.html", suggestions=suggestions, error_code=error_code, \
+			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 
-	return render_template("suggestions.html", result=result.split('\n'), txtweb_key=TXTWEB_APP_KEY)
 
+#================UNFINISHED================
+#Lists the details of the requested medicine.
+#At present it returns the composition and price of the requested medicine.
+@app.route('/app/med_detl/<med_name>')
+def med_detl(med_name):
+	med_name = urllib.unquote(med_name.encode('ascii')).decode('utf-8')
+	tmd = TrueMD()
+	details, error_code, error_msg = tmd.med_details(med_name)
+	if alternatives:
+			return render_template("details.html", details=details, error_code=error_code, \
+			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
+	else:
+		error_code = 2
+		error_msg = "We couldn't find any details for that medicine."
+		return render_template("details.html", details=details, error_code=error_code, \
+			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
+
+
+#Lists the generic alternatives along with their prices for the requested medicine.
 @app.route('/app/med_alt/<med_name>')
 def med_alt(med_name):
 	med_name = urllib.unquote(med_name.encode('ascii')).decode('utf-8')
-	print med_name
 	tmd = TrueMD()
 	alternatives, error_code, error_msg = tmd.med_alternatives(med_name)
 	if alternatives:
@@ -129,7 +155,7 @@ def med_alt(med_name):
 	else:
 		error_code = 2
 		error_msg = "We couldn't find a generic alternative for that medicine."
-		return render_template("suggestions.html", suggestions=suggestions, error_code=error_code, \
+		return render_template("alternatives.html", alternatives=alternatives, error_code=error_code, \
 			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 
 if __name__ == '__main__':
