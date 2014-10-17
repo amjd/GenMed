@@ -91,9 +91,9 @@ class TrueMD(object):
 #Each medicine suggestion links to a page showing its generic alternatives.
 @app.route('/app/med_alt_sugg')
 def med_alt_sugg():
-	if not request.args.get('txtweb_message', None):
+	if not request.args.get('txtweb-message', None):
 		return render_template("base.html", txtweb_key=TXTWEB_APP_KEY)
-	message = request.args['txtweb_message'].strip()
+	message = request.args['txtweb-message'].strip()
 	tmd = TrueMD()
 	suggestions, error_code, error_msg = tmd.med_suggestions(message)
 	if suggestions:
@@ -110,9 +110,9 @@ def med_alt_sugg():
 #Each medicine suggestion links to a page showing its composition and price.
 @app.route('/app/med_detl_sugg')
 def med_detl_sugg():
-	if not request.args.get('txtweb_message', None):
+	if not request.args.get('txtweb-message', None):
 		return render_template("base.html", txtweb_key=TXTWEB_APP_KEY)
-	message = request.args['txtweb_message'].strip()
+	message = request.args['txtweb-message'].strip()
 	tmd = TrueMD()
 	suggestions, error_code, error_msg = tmd.med_suggestions(message)
 	if suggestions:

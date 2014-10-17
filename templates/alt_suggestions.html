@@ -5,7 +5,7 @@
 {% if error_code %}
 	{{ error_msg }}
 {% else %}
-<p>Did you mean:</p><br>
+<p>Did you mean:</p>
 	{% for suggestion in suggestions %}
 		<a href="/app/med_alt/{{ suggestion }}">{{ suggestion }}</a><br>
 	{% endfor %}
