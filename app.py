@@ -125,7 +125,6 @@ def med_detl_sugg():
 			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 
 
-#================UNFINISHED================
 #Lists the details of the requested medicine.
 #At present it returns the composition and price of the requested medicine.
 @app.route('/app/med_detl/<med_name>')
@@ -133,7 +132,7 @@ def med_detl(med_name):
 	med_name = urllib.unquote(med_name.encode('ascii')).decode('utf-8')
 	tmd = TrueMD()
 	details, error_code, error_msg = tmd.med_details(med_name)
-	if alternatives:
+	if details:
 			return render_template("details.html", details=details, error_code=error_code, \
 			error_msg=error_msg, txtweb_key=TXTWEB_APP_KEY)
 	else:
