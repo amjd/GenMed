@@ -59,9 +59,13 @@ class TrueMD(object):
 			result = request.json()
 			if result['status'] == 'ok' or result['status'] == 200:
 				medicine_details = result['response']
-			return medicine_details
+				error_code = 0
+				error_msg = "Success"
 		except:
-			return medicine_details
+			error_code = 1
+			error_msg = "Sorry, we are experiencing some connection issues right now. Please try again later."
+		
+		return medicine_details, error_code, error_msg
 
 	def med_alternatives(self, search_term, limit = 5):
 		"""

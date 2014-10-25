@@ -7,10 +7,12 @@
 {% else %}
 	{{ details['medicine']['brand'] }} <br>
 	{% if details['medicine']['unit_price'] %}
-		Unit price: Rs. {{ details['medicine']['unit_price'] }}
+		Unit price: Rs. {{ details['medicine']['unit_price'] }} <br>
 	{% endif %}
-	{% for constituent in details['constituents'] %}
-		{{ constituent['name'] }} - {{ constituent['strength'] }} <br>
+	{% if details['constituents'] %}
+		Constituents: <br>
+		* {{ details['constituents']['name'] }} - {{ details['constituents']['strength'] }} <br>
+	{% endif %}
 
 {% endif %}
 
