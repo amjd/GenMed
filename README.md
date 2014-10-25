@@ -10,7 +10,7 @@ Note: At the moment, this works only in India.
 - Send `@genmed.info <medicine-name>` to 51115 to get details about a medicine (composition and price). [Unfinished]
 
 ###Todo
-- Add an extension 'info' (@genmed.info) to get the composition of a medicine.
+- Add pagination to show more than 5 results.
 - Handle more edge cases and show error messages where applicable.
 
 ###Thanks
