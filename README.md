@@ -1,19 +1,24 @@
 GenMed
 ======
 
-A [Textweb](http://www.txtweb.com) app to get information about generic medicine. Available at keyword @genmed on 51115. To know more about generic medicine, read on [Wikipedia](http://en.wikipedia.org/wiki/Generic_drug). Powered by [TrueMD.in](http://truemd.in).
+![GenMed](http://i.imgur.com/r6R6kEd.png)
 
-Note: At the moment, this works only in India.
+A [Textweb](http://www.txtweb.com) app to get information about generic medicine. Available at keyword `@genmed` on 51115. To know more about generic medicine, read on [Wikipedia](http://en.wikipedia.org/wiki/Generic_drug). Powered by [TrueMD.in](http://truemd.in) API.
+
+Note: At the moment, this works only in India (Idea, Airtel, Vodafone and Tata Docomo).
 
 ###Usage
-- Send `@genmed.alt <medicine-name>` to 51115 to get a list generic alternatives and their prices for a medicine.
-- Send `@genmed.info <medicine-name>` to 51115 to get details about a medicine (composition and price). [Unfinished]
+Send:
+- `@genmed` to 51115 to get a brief description of supported options.
+- `@genmed.alt <medicine-name>` to 51115 to get a list of generic alternatives for a medicine and their respective prices.
+- `@genmed.info <medicine-name>` to 51115 to get details about a medicine (composition and price).
+- `@genmed.about` to 51115 to know more about the app. 
 
 ###Todo
 - Add pagination to show more than 5 results.
 - Handle more edge cases and show error messages where applicable.
 
-###Thanks
+###Credits
 A big thanks to [TrueMD.in](http://truemd.in) developers for making this possible!
 
 ###Disclaimer
