@@ -22,7 +22,7 @@ class TrueMD(object):
 			self.params['limit'] = limit
 		print repr(self.params)
 
-	def med_suggestions(self, search_term, limit = 5):
+	def med_suggestions(self, search_term, limit = 8):
 		"""
 		GET /medicine_suggestions
 		Parameters:

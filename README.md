@@ -3,7 +3,7 @@ GenMed
 
 A [Textweb](http://www.txtweb.com) app to get information about generic medicine. Available at keyword `@genmed` on 51115. To know more about generic medicine, read on [Wikipedia](http://en.wikipedia.org/wiki/Generic_drug). Powered by [TrueMD.in](http://truemd.in) API.
 
-Note: At the moment, this works only in India (Idea, Airtel, Vodafone and Tata Docomo).
+Note: At the moment, this works only in India (Idea, Airtel, Vodafone, Aircel and Tata Docomo).
 
 ###Usage
 Send:
